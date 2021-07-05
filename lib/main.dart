@@ -110,10 +110,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 stream: counterBloc.counterStream,
                 initialData: 0,
                 builder: (context, snapshot) {
-                  return Text(
-                    '${snapshot.data}',
-                    style: Theme.of(context).textTheme.headline4,
-                  );
+                  if (snapshot.hasData) {
+                    return Text(
+                      '${snapshot.data}',
+                      style: Theme.of(context).textTheme.headline4,
+                    );
+                  }
+                  return Text("Something weird happened");
                 }),
           ],
         ),
